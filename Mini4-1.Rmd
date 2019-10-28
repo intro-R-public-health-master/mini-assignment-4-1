@@ -1,0 +1,114 @@
+---
+title: "Mini HW 4-1: Getting started with functions"
+author: "Your Name"
+date: "Today's date"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Due Sunday, November 3 @ 11:59pm through Github**
+
+Your next assignment is to practice creating functions in `R`.
+
+1. The following code can be used to calculate a 95% confidence interval for a mean, as we learned in Public Health Biostatistics.  Run this code and examine each of the created objects (`x`, `xbar`, `se`, `n`) to be sure you understand what the code is doing.
+```{r}
+x <- rnorm(100)
+
+xbar <- mean(x)
+n <- length(x)
+se <- sd(x) / sqrt(n)
+
+xbar + c(2, -2) * se
+```
+
+Now convert this code to a function, called `mean_ci()`, that takes a vector and returns a 95% confidence interval around the mean of that vector.
+```{r}
+# place your code here
+
+```
+
+Once your function is complete, test your function on the following two vectors.  the function doesn't work as expected, see if you can update your code above to fix the problem!
+
+* A random sample from a uniform distribution: 
+```{r eval=FALSE}
+x <- runif(100)
+mean_ci(x)
+```
+
+* A vector with some missing values:
+```{r eval=FALSE}
+x <- c(rnorm(30), NA, NA)
+mean_ci(x)
+```
+
+2. Complete the following code to calculate a 95% confidence interval for the difference in two means, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
+```{r eval=FALSE}
+x <- rnorm(100, mean=10, sd=5)
+y <- rnorm(100, mean=15, sd=5)
+
+# estimate of difference
+estimate <- 
+
+# standard error of the estimate
+se <- 
+
+estimate + c(2, -2) * se
+```
+
+Now convert this code to a function, called `two_mean_ci()`, that takes two vectors and returns a 95% confidence interval around the difference in means for those vectors.  You might keep in mind any modification you had to make to account for missing values in #1 above.
+```{r}
+# place your code here
+
+```
+
+3. Complete the following code to calculate a 95% confidence interval for a difference in proportions, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
+```{r eval=FALSE}
+x <- c(1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1)
+y <- c(0, 1, 0, 0, 1, 0, 0, 1, 0, 1)
+
+# sample proportions
+n.x <- length(x)
+p.x <- sum(x)/length(x)
+
+n.y <- 
+p.y <- 
+
+# estimate of difference
+estimate <- 
+
+# standard error of the estimate
+se <- 
+
+estimate + c(2, -2) * se
+```
+
+Now convert this code to a function, called `two_prop_ci()`, that takes two 0/1 vectors and returns a 95% confidence interval around the difference in proportions  of those vectors.  You might keep in mind any modification you had to make to account for missing values in #1 above.
+```{r}
+# place your code here
+
+```
+
+4. Complete our sequence of functions by creating a `prop_ci()` function that takes a vector of 0/1 values and returns a 95% confidence interval for a proportion, as we learned in Public Health Biostatistics.
+```{r}
+# place your code here
+
+```
+
+___
+
+When you are finished with your assignment, knit your file and submit through Github. To do so, follow the steps below.  (If your document didn't successfully knit, please reach out to me over email at `phbiostats@jhu.edu` so I can help you trouble-shoot the issue.)
+
+* First you need to **commit** the changes you've made to the document.  Click the colorful Git button at the top of the RStudio window and select "Commit" from the menu.
+* In the window that opens, **stage** your changes by clicking the check boxes next to the `Mini0-1.Rmd` and `Mini0-1.html` files.
+* In the "Commit message" box, type a short description of what changes you've made, something like: `Completed assignment`
+* Click the "Commit" button on the bottom right.
+* You'll see a window that will tell you about the changes that you've made.  Click "Close" to close the window.  You've successfully committed! You can close this commit window now.
+* After committing, you must **push** your changes to the repository on Github.  Do this by clicking the colorful Git button again and select "Push Branch".  
+* Again, you'll see a window open that tells you your changes have been pushed!
+* If you want, you can look at your repository on [Github.com](https://github.com/) and should be able to see your changes there!  
+* You've successfully submitted your assignment :)
+
+
