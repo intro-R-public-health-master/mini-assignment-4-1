@@ -9,11 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Due Sunday, November 3 @ 11:59pm through Github**
+**Due Sunday, November 1 @ 11:59pm through Github**
 
 Your next assignment is to practice creating functions in `R`.
 
-1. The following code can be used to calculate a 95% confidence interval for a mean, as we learned in Public Health Biostatistics.  Run this code and examine each of the created objects (`x`, `xbar`, `se`, `n`) to be sure you understand what the code is doing.
+1. The following code can be used to calculate a 95% confidence interval for a population mean based on sample of observations, as we learned in Public Health Biostatistics. Run this code and examine each of the created objects (`x`, `xbar`, `se`, `n`) to be sure you understand what the code is doing.
 ```{r}
 x <- rnorm(100)
 
@@ -26,11 +26,11 @@ xbar + c(2, -2) * se
 
 Now convert this code to a function, called `mean_ci()`, that takes a vector and returns a 95% confidence interval around the mean of that vector.
 ```{r}
-# place your code here
+# place your code to define your function here
 
 ```
 
-Once your function is complete, test your function on the following two vectors.  the function doesn't work as expected, see if you can update your code above to fix the problem!
+Once your function is complete, test your function on the following two vectors.  **If the function doesn't work as expected, see if you can update your code above to fix the problem!**
 
 * A random sample from a uniform distribution: 
 ```{r eval=FALSE}
@@ -44,7 +44,15 @@ x <- c(rnorm(30), NA, NA)
 mean_ci(x)
 ```
 
-2. Complete the following code to calculate a 95% confidence interval for the difference in two means, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
+2. Complete the following code to calculate a 95% confidence interval for the difference in two population means, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
+
+As a hint, remember that in Public Health Biostatistics we calculate confidence intervals as 
+$$
+estimate \pm 2*SE(estimate)
+$$
+And that for a difference in population means, our estimate is $\bar{X}_1-\bar{X}_2$.  And the standard error of this estimate is: 
+$$SE(\bar{X}_1-\bar{X}_2) = \sqrt{s_1^2/n_1 + s_2^2/n_2}$$
+
 ```{r eval=FALSE}
 x <- rnorm(100, mean=10, sd=5)
 y <- rnorm(100, mean=15, sd=5)
@@ -64,7 +72,11 @@ Now convert this code to a function, called `two_mean_ci()`, that takes two vect
 
 ```
 
-3. Complete the following code to calculate a 95% confidence interval for a difference in proportions, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
+3. Complete the following code to calculate a 95% confidence interval for a difference in population proportions, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
+
+As a hint, remember that for a difference in population proportions, our estimate is $\hat{p}_1-\hat{p}_2$.  And the standard error of this estimate is: 
+$$SE(\hat{p}_1-\hat{p}_2) = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$$
+
 ```{r eval=FALSE}
 x <- c(1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1)
 y <- c(0, 1, 0, 0, 1, 0, 0, 1, 0, 1)
@@ -92,6 +104,10 @@ Now convert this code to a function, called `two_prop_ci()`, that takes two 0/1 
 ```
 
 4. Complete our sequence of functions by creating a `prop_ci()` function that takes a vector of 0/1 values and returns a 95% confidence interval for a proportion, as we learned in Public Health Biostatistics.
+
+As a hint, remember that for a difference in population proportions, our estimate is $\hat{p}$.  And the standard error of this estimate is: 
+$$SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
+
 ```{r}
 # place your code here
 
@@ -102,7 +118,7 @@ ___
 When you are finished with your assignment, knit your file and submit through Github. To do so, follow the steps below.  (If your document didn't successfully knit, please reach out to me over email at `phbiostats@jhu.edu` so I can help you trouble-shoot the issue.)
 
 * First you need to **commit** the changes you've made to the document.  Click the colorful Git button at the top of the RStudio window and select "Commit" from the menu.
-* In the window that opens, **stage** your changes by clicking the check boxes next to the `Mini0-1.Rmd` and `Mini0-1.html` files.
+* In the window that opens, **stage** your changes by clicking the check boxes next to the `Mini4-1.Rmd` file.
 * In the "Commit message" box, type a short description of what changes you've made, something like: `Completed assignment`
 * Click the "Commit" button on the bottom right.
 * You'll see a window that will tell you about the changes that you've made.  Click "Close" to close the window.  You've successfully committed! You can close this commit window now.
