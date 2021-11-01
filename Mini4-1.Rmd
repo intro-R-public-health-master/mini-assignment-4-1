@@ -9,9 +9,28 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Due Sunday, November 1 @ 11:59pm through Github**
+**Due Monday, November 1 at the end of class through Github**
 
 Your next assignment is to practice creating functions in `R`.
+
+### Recap from Content 4-1
+
+There are three key steps to creating a new function using the following format:
+```{r eval=FALSE}
+function_name <- function(argument_1, argument_2, ...) {
+# function's body
+# code to do the function's task using the variables argument_1 and argument_2 from above
+  
+}
+```
+
+(1) You need to pick a **name** for the function. You should make the name meaningful to the task the function does.
+
+(2) You list the inputs of the function, called **arguments**, inside `function()`. For a single argument, we use `function(x)`.  For multiple arguments, we would have something like `function(x, y, z)`.  It can be helpful to give your arguments meaningful names as well!
+
+(3) You place the code that does the task in the **body** of the function, a block between `{` and `}` that immediately follows `function(...)`.
+
+### Assignment
 
 1. The following code can be used to calculate a 95% confidence interval for a population mean based on sample of observations, as we learned in Public Health Biostatistics. Run this code and examine each of the created objects (`x`, `xbar`, `se`, `n`) to be sure you understand what the code is doing.
 ```{r}
@@ -105,7 +124,7 @@ Now convert this code to a function, called `two_prop_ci()`, that takes two 0/1 
 
 4. Complete our sequence of functions by creating a `prop_ci()` function that takes a vector of 0/1 values and returns a 95% confidence interval for a proportion, as we learned in Public Health Biostatistics.
 
-As a hint, remember that for a difference in population proportions, our estimate is $\hat{p}$.  And the standard error of this estimate is: 
+As a hint, remember that for a single population proportion, our estimate is $\hat{p}$.  And the standard error of this estimate is: 
 $$SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
 
 ```{r}
