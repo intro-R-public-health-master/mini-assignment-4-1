@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Due Monday, November 1 at the end of class through Github**
+**Due Thursday, November 3 through Github**
 
 Your next assignment is to practice creating functions in `R`.
 
