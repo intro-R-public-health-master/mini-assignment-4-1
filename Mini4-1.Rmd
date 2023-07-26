@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Due Thursday, November 3 through Github**
+**Due Thursday, November 2 through Github**
 
 Your next assignment is to practice creating functions in `R`.
 
@@ -40,7 +40,7 @@ xbar <- mean(x)
 n <- length(x)
 se <- sd(x) / sqrt(n)
 
-xbar + c(2, -2) * se
+xbar + c(-2, 2) * se
 ```
 
 Now convert this code to a function, called `mean_ci()`, that takes a vector and returns a 95% confidence interval around the mean of that vector.
@@ -82,7 +82,7 @@ estimate <-
 # standard error of the estimate
 se <- 
 
-estimate + c(2, -2) * se
+estimate + c(-2, 2) * se
 ```
 
 Now convert this code to a function, called `two_mean_ci()`, that takes two vectors and returns a 95% confidence interval around the difference in means for those vectors.  You might keep in mind any modification you had to make to account for missing values in #1 above.
@@ -113,7 +113,7 @@ estimate <-
 # standard error of the estimate
 se <- 
 
-estimate + c(2, -2) * se
+estimate + c(-2, 2) * se
 ```
 
 Now convert this code to a function, called `two_prop_ci()`, that takes two 0/1 vectors and returns a 95% confidence interval around the difference in proportions  of those vectors.  You might keep in mind any modification you had to make to account for missing values in #1 above.
