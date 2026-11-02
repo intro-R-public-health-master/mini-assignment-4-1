@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Due Thursday, October 30 through Github**
+**Due Thursday, November 5 through Github**
 
 Your next assignment is to practice creating functions in `R`.
 
@@ -34,8 +34,10 @@ function_name <- function(argument_1, argument_2, ...) {
 
 1. The following code can be used to calculate a 95% confidence interval for a population mean based on sample of observations, as we learned in Public Health Biostatistics. Run this code and examine each of the created objects (`x`, `xbar`, `se`, `n`) to be sure you understand what the code is doing.
 ```{r}
+# create a random set of values to test the calculation code
 x <- rnorm(100)
 
+# code to calculate the confidence interval
 xbar <- mean(x)
 n <- length(x)
 se <- sd(x) / sqrt(n)
@@ -43,13 +45,13 @@ se <- sd(x) / sqrt(n)
 xbar + c(-2, 2) * se
 ```
 
-Now convert this code to a function, called `mean_ci()`, that takes a vector and returns a 95% confidence interval around the mean of that vector.
+Now convert this code to a function, called `mean_ci()`, that takes a vector and returns a 95% confidence interval around the mean of that vector. NOTE: Should the call to `rnorm` be inside the body of the function?
 ```{r}
 # place your code to define your function here
 
 ```
 
-Once your function is complete, test your function on the following two vectors.  **If the function doesn't work as expected, see if you can update your code above to fix the problem!**
+Once your function is complete, test your function on the following two vectors, generated randomly.  **If the function doesn't work as expected, see if you can update your code above to fix the problem!** You may need to include an additional argument to allow the user to specify how to handle missing values correctly!
 
 * A random sample from a uniform distribution: 
 ```{r eval=FALSE}
@@ -63,6 +65,8 @@ x <- c(rnorm(30), NA, NA)
 mean_ci(x)
 ```
 
+Is there something you might need to change about your function to correctly calculate the number of observations in the vector in the presence of missing values? Can your function allow the user to either have `mean_ci` return the CI ignoring missing values, or to return `NA` in this example? 
+
 2. Complete the following code to calculate a 95% confidence interval for the difference in two population means, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
 
 As a hint, remember that in Public Health Biostatistics we calculate confidence intervals as 
@@ -73,6 +77,7 @@ And that for a difference in population means, our estimate is $\bar{X}_1-\bar{X
 $$SE(\bar{X}_1-\bar{X}_2) = \sqrt{s_1^2/n_1 + s_2^2/n_2}$$
 
 ```{r eval=FALSE}
+# generate some random input values to test things out
 x <- rnorm(100, mean=10, sd=5)
 y <- rnorm(100, mean=15, sd=5)
 
@@ -91,46 +96,24 @@ Now convert this code to a function, called `two_mean_ci()`, that takes two vect
 
 ```
 
-3. Complete the following code to calculate a 95% confidence interval for a difference in population proportions, as we learned in Public Health Biostatistics.  Feel free to add/store some intermediate calculations in your code to make it more easily understandable.
 
-As a hint, remember that for a difference in population proportions, our estimate is $\hat{p}_1-\hat{p}_2$.  And the standard error of this estimate is: 
-$$SE(\hat{p}_1-\hat{p}_2) = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$$
+Once your function is complete, test your function on the following data, generated randomly.  **If the function doesn't work as expected, see if you can update your code above to fix the problem!** You may need to include an additional argument to allow the user to specify how to handle missing values correctly!
 
+* A random sample from a uniform distribution: 
 ```{r eval=FALSE}
-x <- c(1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1)
-y <- c(0, 1, 0, 0, 1, 0, 0, 1, 0, 1)
-
-# sample proportions
-n.x <- length(x)
-p.x <- sum(x)/length(x)
-
-n.y <- 
-p.y <- 
-
-# estimate of difference
-estimate <- 
-
-# standard error of the estimate
-se <- 
-
-estimate + c(-2, 2) * se
+x <- runif(100)
+y <- runif(100)
+two_mean_ci(x, y)
 ```
 
-Now convert this code to a function, called `two_prop_ci()`, that takes two 0/1 vectors and returns a 95% confidence interval around the difference in proportions  of those vectors.  You might keep in mind any modification you had to make to account for missing values in #1 above.
-```{r}
-# place your code here
-
+* A vector with some missing values:
+```{r eval=FALSE}
+x <- c(rnorm(30), NA, NA)
+y <- c(rnorm(30), NA, NA)
+two_mean_ci(x, y)
 ```
 
-4. Complete our sequence of functions by creating a `prop_ci()` function that takes a vector of 0/1 values and returns a 95% confidence interval for a proportion, as we learned in Public Health Biostatistics.
-
-As a hint, remember that for a single population proportion, our estimate is $\hat{p}$.  And the standard error of this estimate is: 
-$$SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
-
-```{r}
-# place your code here
-
-```
+Can your function allow the user to either have `two_mean_ci` return the CI ignoring missing values, or to return `NA` in this example?
 
 ___
 
